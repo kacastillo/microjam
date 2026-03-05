@@ -60,14 +60,14 @@ namespace any {
          * @param data shared information, such as a rng and number of frames left in the microgame
          */
         void fade_out(const mj::game_data& data) override;
-}
 
     private:
         //the character that the player can move
         player _player;
-
-
 };
+
+}
+
 #endif
 
 
