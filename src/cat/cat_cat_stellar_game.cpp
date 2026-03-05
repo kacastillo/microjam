@@ -1,6 +1,8 @@
 #include "cat_cat_stellar_game.h"
 #include "cat_cat_stellar_game.h"
 
+#include "mj/mj_game_list.h"
+
 
 // add an anonymous namespace after your includes but before 
 namespace
