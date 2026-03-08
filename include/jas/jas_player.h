@@ -27,12 +27,17 @@ namespace jas
          * @param starting_position the location to start the player at
          * @param speed the pixels/frame the player moves at in each dimension
          */
-        player(bn::fixed_point starting_position, bn::fixed speed, bn::fixed gravity);
+        player(bn::fixed_point starting_position, bn::fixed vertical_speed, bn::fixed gravity, bool engine_fired);
 
         /**
          * Reads from the d-pad and moves the player by one frame accordingly.
          */
         void update();
+
+        /**
+         * When actived, engineOn will add increase the player's y axis position for a set amount of time
+         */
+        void engineOn(bn::fixed engine_thrust);
 
         /**
          * Returns whether the player has left the screen
@@ -45,9 +50,10 @@ namespace jas
         // The sprite to display the player
         bn::sprite_ptr _sprite;
         // The pixels/frame the player moves in each dimension
-        bn::fixed _speed;
+        bn::fixed _vertical_speed;
 
         bn::fixed _gravity;
+        bool _engine_fired;
     };
 
 }
