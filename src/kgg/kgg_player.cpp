@@ -1,12 +1,12 @@
 #include "kgg/kgg_player.h"
 
 #include "bn_keypad.h"
-#include "bn_sprite_items_aub_dot.h"
+#include "bn_sprite_items_sprite.h"
 
 namespace kgg {
 
 player::player()
-: _sprite(bn::sprite_items::aub_dot.create_sprite(0, 0))
+: _sprite(bn::sprite_items::sprite.create_sprite(0, 0))
 {
 }
 

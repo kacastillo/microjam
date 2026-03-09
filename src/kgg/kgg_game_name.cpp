@@ -32,6 +32,7 @@ int kgg_game_name::total_frames() const
 mj::game_result kgg_game_name::play(const mj::game_data& data)
 {
     (void)data;
+    _player.update();
     _victory = true;
     return mj::game_result();
 }

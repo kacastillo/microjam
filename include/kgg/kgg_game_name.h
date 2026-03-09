@@ -2,6 +2,7 @@
 #define KGG_GAME_NAME_H
 
 #include "mj/mj_game.h"
+#include "kgg/kgg_player.h"
 
 namespace kgg {
 
@@ -26,6 +27,7 @@ public:
 
 private:
     bool _victory = false;
+    player _player;
 
 
 };
