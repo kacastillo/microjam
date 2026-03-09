@@ -1,3 +1,6 @@
+#ifndef JPB_ALIEN_SHOOTER_H
+#define JPB_ALIEN_SHOOTER_H
+
 #include "mj/mj_game.h"
 #include "jpb/jpb_player.h"
 
@@ -23,3 +26,5 @@ namespace jpb {
       
   };
 }
+
+#endif

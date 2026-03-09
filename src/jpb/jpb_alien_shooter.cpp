@@ -33,7 +33,7 @@ namespace jpb {
     mj::game_result jpb_alien_shooter::play([[maybe_unused]] const mj::game_data& data) {
         _player.update();
 
-        mj::game_result result(victory(), true);
+        mj::game_result result(victory(), false);
         return result;
     }
 

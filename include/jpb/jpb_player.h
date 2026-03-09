@@ -1,3 +1,6 @@
+#ifndef JPB_PLAYER_H
+#define JPB_PLAYER_H
+
 #include <bn_fixed_point.h>
 #include <bn_sprite_ptr.h>
 #include <bn_display.h>
@@ -19,4 +22,7 @@ class jpb_player {
         bn::sprite_ptr enemy_sprite;
         bn::fixed speed;
 };
+
 }
+
+#endif
