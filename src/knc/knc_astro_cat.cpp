@@ -10,9 +10,10 @@ namespace {
 namespace knc {
 
     knc_astro_cat::knc_astro_cat(int completed_games, const mj::game_data& data)
-        : mj::game("knc")
-    {
-    }
+        : mj::game("knc"),
+        // start in middle, speed number 2
+        _cat(bn::fixed_point(0,0), 2)
+    {}
 
     bn::string<16> knc_astro_cat::title() const
     {
@@ -26,6 +27,7 @@ namespace knc {
 
     mj::game_result knc_astro_cat::play(const mj::game_data& data)
     {
+        _cat.update();
         return mj::game_result();
     }
 

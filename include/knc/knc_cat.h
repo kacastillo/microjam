@@ -33,6 +33,7 @@ namespace knc {
     private:
     bn::sprite_ptr _sprite;
     bn::fixed _speed;
+    bn::fixed_point _position;
     };
 }
 

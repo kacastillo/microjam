@@ -2,6 +2,7 @@
 #define KNC_ASTRO_CAT_H
 
 #include "mj/mj_game.h"
+#include "knc/knc_cat.h"
 
 namespace knc {
     class knc_astro_cat : public mj::game {
@@ -14,6 +15,9 @@ namespace knc {
         bool victory() const override;
         void fade_in(const mj::game_data& data) override;
         void fade_out(const mj::game_data& data) override;
+
+    private:
+        cat _cat;
     };
 }
 
