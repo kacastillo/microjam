@@ -8,6 +8,7 @@
 #include <bn_size.h>
 #include "jpb/jpb_enemy.h"
 #include "jpb/jpb_missile.h"
+#include <bn_vector.h>
 
 namespace jpb {
 
@@ -18,6 +19,7 @@ class jpb_player {
         jpb_player(bn::fixed_point player_position, bn::size player_size, bn::fixed _speed);
 
         void update();
+        void shoot(bn::vector<jpb_missile, 10>& _missiles);
 
         bool enemy_intersect(bn::rect enemy_box) const;
     

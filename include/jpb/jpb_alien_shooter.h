@@ -4,6 +4,8 @@
 #include "mj/mj_game.h"
 #include "jpb/jpb_player.h"
 #include "jpb/jpb_enemy.h"
+#include "jpb/jpb_missile.h"
+#include <bn_vector.h>
 
 namespace jpb {
   class jpb_alien_shooter : public mj::game {
@@ -25,6 +27,7 @@ namespace jpb {
       private:
         jpb_player _player;
         jpb_enemy _enemy;
+        bn::vector <jpb_missile, 10> _missiles;
   };
 }
 

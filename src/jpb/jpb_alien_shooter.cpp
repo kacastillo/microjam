@@ -9,6 +9,8 @@ namespace
     constexpr bn::string_view music_credits[] = {""};
 }
 
+static constexpr int MAX_Y = bn::display::height() / 2;
+
 MJ_GAME_LIST_ADD(jpb::jpb_alien_shooter) 
 MJ_GAME_LIST_ADD_CODE_CREDITS(code_credits)
 MJ_GAME_LIST_ADD_GRAPHICS_CREDITS(graphics_credits)
@@ -26,6 +28,9 @@ namespace jpb {
         _enemy(jpb_enemy({0, -20}, ENEMY_SIZE))
     {}
 
+    bn::vector<jpb_missile, 10> _missiles;
+    bn::vector<jpb_missile, 10> _trashbin;
+
     bn::string<16> jpb_alien_shooter::title() const {
         return "placeholder";
     }
@@ -36,7 +41,19 @@ namespace jpb {
 
     mj::game_result jpb_alien_shooter::play([[maybe_unused]] const mj::game_data& data) {
         _player.update();
+        _player.shoot(_missiles);
         _enemy.update();
+        for (jpb_missile& missile : _missiles) {
+            missile.update();
+
+            if (missile._sprite.y() == MAX_Y) {
+                _trashbin.push_back(missile);
+            }
+        }
+
+        for (int i = 0; i < _trashbin.size(); i++ ) {
+            _trashbin.pop_back();
+        }
 
         mj::game_result result(victory(), false);
         return result;

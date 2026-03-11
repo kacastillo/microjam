@@ -1,8 +1,11 @@
 #ifndef JPB_MISSILE_H
 #define JPB_MISSILE_H
 
-#include "jpb/jpb_enemy.h"
-#include "jpb/jpb_player.h"
+#include <bn_sprite_ptr.h>
+#include <bn_fixed.h>
+#include <bn_rect.h>
+#include <bn_size.h>
+#include <bn_fixed_point.h>
 
 
 namespace jpb {

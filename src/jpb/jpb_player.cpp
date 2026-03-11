@@ -2,6 +2,7 @@
 #include <bn_keypad.h>
 #include "bn_sprite_items_jpb_ship.h"
 #include "bn_sprite_items_jpb_missile.h"
+#include "bn_vector.h"
 
 namespace jpb {
     
@@ -38,5 +39,13 @@ namespace jpb {
 
     bool jpb_player::enemy_intersect(bn::rect enemy_box) const {
         return player_box.intersects(enemy_box);
+    }
+
+    void jpb_player::shoot(bn::vector<jpb_missile, 10>& _missiles) {
+        if (bn::keypad::a_pressed()) {
+            if (_missiles.size() < 10 ) {
+                _missiles.push_back(jpb_missile({player_sprite.x(), player_sprite.y()}, 1, {8, 8}));
+            }
+        }
     }
 }
