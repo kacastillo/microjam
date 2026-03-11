@@ -23,7 +23,7 @@ namespace axo
 
     void obstacle::update([[maybe_unused]] player &player)
     {
-        // moves obstacles towards the right
+        // moves obstacles downwards
         _sprite.set_y(_sprite.y() + _speed * 1.2);
         // rotate the sprite as it moves
         if(_sprite.rotation_angle() >= 360) {
