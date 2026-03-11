@@ -6,7 +6,10 @@
 #include "bn_optional.h"
 #include "bn_array.h"
 #include "cat/cat_player.h"
+#include "bn_sprite_items_cat_star.h"
 #include "bn_regular_bg_ptr.h"
+#include "bn_sprite_text_generator.h"
+#include "bn_vector.h"
 
 namespace cat
 {
@@ -79,15 +82,17 @@ namespace cat
         int _stars_to_win;
 
         cat_player _player;
-        bn::array<bn::optional<bn::sprite_ptr>, 10> _stars;
+        bn::array<bn::optional<bn::sprite_ptr>, _total_stars> _stars;
         int _stars_collected;
+        bn::sprite_text_generator _text_generator;
+        bn::vector<bn::sprite_ptr, 16> _score_sprites;
 
         void _check_collection();
 
         bn::regular_bg_ptr _background;
 
         //helper function
-      static bn::fixed _recommended_player_speed(mj::difficulty_level difficulty);
+        static bn::fixed _recommended_player_speed(mj::difficulty_level difficulty);
         static int _recommended_stars_to_win(mj::difficulty_level difficulty);
     };
 }

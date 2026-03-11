@@ -5,11 +5,13 @@
 #include "bn_regular_bg_items_cat_background.h"
 #include "bn_sprite_text_generator.h"
 #include "bn_sprite_font.h"
-#include "common_variable_8x16_sprite_font.h"
+#include "mj/mj_small_sprite_font.h"
+#include "bn_vector.h"
+#include "bn_string.h"
 
 
 
-// add an anonymous namespace after your includes but before 
+//anonymous namespace 
 namespace
 {
     constexpr bn::string_view code_credits[] = { "Nadia Ivanishchuk", "Paris Allkurti" };
@@ -21,7 +23,6 @@ namespace
 // All game functions/classes/variables/constants scoped to the namespace
 namespace cat
 {
-
 /**
  * Constructor for an instance of a cat_stellar_game
  * 
@@ -36,13 +37,15 @@ cat_cat_stellar_game::cat_cat_stellar_game([[maybe_unused]] int completed_games,
     _stars_to_win(_recommended_stars_to_win(_difficulty)),
     _player({0, 0}, _recommended_player_speed(_difficulty)),
     _stars_collected(0),
+    _text_generator(mj::small_sprite_font),
     _background(bn::regular_bg_items::cat_background.create_bg(0, 0))
     {
         for(int i = 0; i < _total_stars; ++i) {
-            bn::fixed x = bn::fixed(data.random.get_int(200)) - 100; // Random x between -100 and 100
-            bn::fixed y = bn::fixed(data.random.get_int(120)) - 60; // Random y between -60 and 60
+            bn::fixed x = bn::fixed(data.random.get_int(200)) - 100; 
+            bn::fixed y = bn::fixed(data.random.get_int(120)) - 60; 
             _stars[i] = bn::sprite_items::cat_star.create_sprite({x, y});
         }
+         _text_generator.generate(-90, -70, "Score: 0", _score_sprites);
     }
 
     bn::fixed cat_cat_stellar_game::_recommended_player_speed(mj::difficulty_level difficulty)
@@ -75,10 +78,7 @@ int cat_cat_stellar_game::_recommended_stars_to_win(mj::difficulty_level difficu
     }
 }
 
-
-    
-
-    /**
+/**
  * The instructions given to the player at the beginning of the microgame.
  * 
  * Must be <= 16 characters long
@@ -122,6 +122,10 @@ bool cat_cat_stellar_game::victory() const {
     return _stars_collected >= _stars_to_win;
 }
 
+/**
+ * Checks if the player has collected any stars and updates the score accordingly.
+ */
+
 void cat_cat_stellar_game::_check_collection()
 {
     bn::fixed_point player_pos = _player.position();
@@ -139,6 +143,13 @@ void cat_cat_stellar_game::_check_collection()
             {
                 star.reset(); // hides the sprite and frees it
                 _stars_collected++;
+
+                _score_sprites.clear();
+
+                bn::string<20> score_text = "Score: ";
+
+                score_text.append(bn::to_string<2>(_stars_collected));
+                _text_generator.generate(-90, -70, score_text, _score_sprites);
             }
         }
     }
