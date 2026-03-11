@@ -2,21 +2,15 @@
 #include <bn_keypad.h>
 #include "bn_sprite_items_sdg_arrow_sheet.h"
 #include <bn_random.h>
-#include <bn_seed_random.h>
 #include <bn_log.h>
-#include <bn_core.h>
+
 
 namespace sdg {
 
-    bn::random rng = bn::random();
+bn::random rng = bn::random();
 
 input::input(int difficulty) : _diff(difficulty), _progress(0)
 {
-    // random number generator seed based off of CPU usage
-    // unsigned seed = bn::core::current_cpu_ticks();
-    // random number generator using said custom seed
-    // bn::seed_random rng(seed);
-
     // loop to add random code inputs
     for (int i = 0; i < _diff; i++) {
         rng.update();
