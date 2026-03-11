@@ -5,7 +5,8 @@
 
 namespace sdg {
 
-input::input() {
+input::input(int difficulty) : diff(difficulty)
+{
     challenge = { 0, 1, 2, 3, 0 }; // will be made random later
 };
 
