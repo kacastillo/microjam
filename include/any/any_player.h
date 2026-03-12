@@ -16,11 +16,11 @@ class player {
 public:
     player(bn::sprite_ptr sprite);
 
-    void update(bn::span<const platform> platforms);
+    void update(bn::span<const platform> platforms); 
 
-       
     bn::fixed x() const;
     bn::fixed y() const;
+        
 
 private:
     bn::sprite_ptr _sprite;

@@ -27,7 +27,6 @@ namespace any {
             }
         }
     }
-
     bn::fixed player::x() const { return _sprite.x(); }
     bn::fixed player::y() const { return _sprite.y(); }
 }
