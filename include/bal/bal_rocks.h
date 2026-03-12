@@ -17,13 +17,6 @@ class rock{
         rock(int starting_x, int starting_y, bn::fixed speed, bn::size rock_size);
 
         bool update();
-<<<<<<< HEAD
-
-        bn::sprite_ptr sprite;
-        bn::fixed speed;
-        bn::size size;
-        bn::rect bounding_box;
-=======
         
         bn::rect bounding_box;
     
@@ -32,7 +25,6 @@ class rock{
         bn::fixed _speed;
         bn::size _size;
        
->>>>>>> a04e09abb4cf283f569c70921a25f7236f5761b1
 };
 
 }

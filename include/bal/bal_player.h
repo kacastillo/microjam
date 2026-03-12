@@ -17,10 +17,6 @@ class player{
         player(bn::fixed_point starting_position, bn::fixed speed);
         void update();
 
-<<<<<<< HEAD
-        // bn::sprite_ptr _sprite;
-=======
->>>>>>> a04e09abb4cf283f569c70921a25f7236f5761b1
         bn::rect bounding_box;
 
     private:
