@@ -27,7 +27,6 @@ namespace bal
         void fade_in(const mj::game_data& data) override;
 
         void fade_out(const mj::game_data& data) override;
-
     private:
         player _bal_player;
         bn::vector<rock, 50> _rocks;
