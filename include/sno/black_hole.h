@@ -39,7 +39,7 @@ namespace sno
         // The position of the black hole
         bn::fixed_point _position;
         // The amount of frames in the entire animation
-        bn::sprite_animate_action<8> _sprite_action;
+        bn::sprite_animate_action<3> _sprite_action;
     };
 
 }
