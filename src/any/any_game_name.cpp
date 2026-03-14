@@ -75,8 +75,6 @@ any_game_name::any_game_name(int completed_games, const mj::game_data& data) :
     text_generator.generate(0, 55, diff_text, _text_sprites);
 }
 
-
-
 bn::string<16> any_game_name::title() const {
     return "Grab the Moon";
 }

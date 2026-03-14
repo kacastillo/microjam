@@ -29,16 +29,13 @@ namespace any {
     for(const platform& p : platforms) {
         if (_sprite.y() >= p.y() - 6 && _sprite.y() <= p.y() + 2 &&
             _sprite.x() >= p.x() - 24 && _sprite.x() <= p.x() + 24) {
-            
             _dy = -4.3; 
-            
             _sprite.set_y(p.y() - 6); 
             break; 
         }
     }
     }
 }
-
     bn::fixed player::x() const { return _sprite.x(); }
     bn::fixed player::y() const { return _sprite.y(); }
 }

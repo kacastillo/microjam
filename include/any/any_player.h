@@ -9,7 +9,7 @@
 namespace any {
     class player {
     public:
-        player(bn::fixed x, bn::fixed y);
+        player(bn::fixed x, bn::fixed y); 
         
         void update(bn::span<const platform> platforms);
         bn::fixed x() const;

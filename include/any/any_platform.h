@@ -38,7 +38,5 @@ private:
     bn::fixed _y;
     bn::sprite_ptr _sprite;
 };
-
 }
-
 #endif
