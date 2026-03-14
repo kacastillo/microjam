@@ -58,6 +58,7 @@ namespace sno
     {
         _player.update();
         _player.attraction(_black_hole.position());
+        _black_hole.update();
 
         // Check if player collides with black hole
         if (_player.collides_with(_black_hole.position(), 8))
