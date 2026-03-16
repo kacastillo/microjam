@@ -8,7 +8,13 @@ namespace kgg {
 
 rock::rock(bn::fixed x, bn::fixed y, bn::fixed speed)
 : _sprite(bn::sprite_items::rock.create_sprite(x, y)), // position to create the rock
-  _speed(speed)
+  _speed(speed),
+  _animation(                                   
+      bn::create_sprite_animate_action_forever( 
+          _sprite,
+          12,                                    
+          bn::sprite_items::rock.tiles_item(),
+          0, 1))     
 {
 }
 
@@ -18,6 +24,8 @@ void rock::update()
     {
         return;
     }
+
+    _animation.update(); // updating animation every frame
 
     _sprite.set_y(_sprite.y() + _speed); // rock moves downward by speed
 

@@ -3,6 +3,7 @@
 
 #include "bn_fixed.h"
 #include "bn_sprite_ptr.h"
+#include "bn_sprite_animate_actions.h"
 
 namespace kgg {
 
@@ -20,6 +21,8 @@ private:
     bn::sprite_ptr _sprite;
     bn::fixed _speed; // speed
     bool _active = true;
+
+    bn::sprite_animate_action<2> _animation;
 };
 
 }
