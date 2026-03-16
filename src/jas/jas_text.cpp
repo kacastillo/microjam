@@ -4,8 +4,12 @@ namespace jas {
 
   /* Text constructor */
   text::text() {
-        // Generate the sprites and store them in the vector
-        text_generator.generate(TEXT_POSITION, instructions, text_sprites);
+
+    // Ensure text is visible
+    text_generator.set_z_order(-10);
+
+    // Generate the sprites and store them in the vector
+    text_generator.generate(TEXT_POSITION, instructions, text_sprites);
 
   }
 

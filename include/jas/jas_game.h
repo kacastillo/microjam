@@ -6,6 +6,7 @@
 #include "mj/mj_game.h"
 #include "jas/jas_player.h"
 #include "jas/jas_planet.h"
+#include "jas/jas_stars.h"
 #include "jas/jas_text.h"
 
 
@@ -76,6 +77,9 @@ namespace jas
 
         // The planet
         planet _planet;
+
+        // The stars background
+        stars _stars;
 
         // The text
         text _text;

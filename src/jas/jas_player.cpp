@@ -22,6 +22,8 @@ namespace jas
                                                                                                      _gravity(gravity),
                                                                                                      _crashed(false)
     {
+        //  Ensure sprite is visible
+        _sprite.set_z_order(-10);
     }
     /**
      * Moves the player based on vertical speed, changing when the boost button is held.
