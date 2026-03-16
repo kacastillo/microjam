@@ -94,6 +94,8 @@ mj::game_result axo_aquatic_galaxy_defense::play([[maybe_unused]] const mj::game
             auto& obstacle = _obstacles[i];
             if(bubble.get_hitbox().intersects(obstacle.get_hitbox())) {
                 destroy_obstacle(i);
+                //bubbles[i] = bubbles.back();
+                //bubbles.pop_back();
                 break;
             }
         }
