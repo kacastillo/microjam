@@ -96,8 +96,10 @@ namespace sdg{
     {
         _player.update();
 
+        // player progress class attribute
         int progress = _player.progress();
 
+        // initialize arrows
         const bn::sprite_item* arrow_items[4] = {
             &bn::sprite_items::arrow_up,
             &bn::sprite_items::arrow_right,
@@ -105,13 +107,23 @@ namespace sdg{
             &bn::sprite_items::arrow_left
         };
 
+        // arrow pattern (pointer)
         const auto& pattern = _player.challenge();
 
+        // shows green arrows when correct
         for(int i = 0; i < progress; ++i)
         {
             _arrows[i].set_tiles(
                 arrow_items[pattern[i]]->tiles_item().create_tiles(1)
             );
+        }
+
+        if (progress == 0) {
+            for (int i = 0; i < _player.challenge().size(); i++) {
+                _arrows[i].set_tiles(arrow_items[pattern[i]]->tiles_item().create_tiles(2));
+                _arrows[i].set_tiles(arrow_items[pattern[i]]->tiles_item().create_tiles(3));
+                _arrows[i].set_tiles(arrow_items[pattern[i]]->tiles_item().create_tiles(0));
+            }
         }
 
         mj::game_result result(victory(), false);
