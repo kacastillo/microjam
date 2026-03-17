@@ -42,6 +42,11 @@ namespace sno
         void attraction(bn::fixed_point bh_position);
 
         /**
+         * Screen wrap function to wrap the player to the opposite side, left to right,
+         */
+        void screenWrap();
+
+        /**
          * Returns whether the player has left the screen
          *
          * @return true if the player has left the screen, false if it is still on the screen

@@ -42,6 +42,27 @@ namespace sno
         }
     }
 
+    void player::screenWrap()
+    {
+        bn::fixed_point pos = _sprite.position();
+        if (pos.x() < MIN_X)
+        {
+            _sprite.set_x(MAX_X);
+        }
+        else if (pos.x() > MAX_X)
+        {
+            _sprite.set_x(MIN_X);
+        }
+        if (pos.y() < MIN_Y)
+        {
+            _sprite.set_y(MAX_Y);
+        }
+        else if (pos.y() > MAX_Y)
+        {
+            _sprite.set_y(MIN_Y);
+        }
+    }
+
     /**
      * Returns whether the player has left the screen
      *
