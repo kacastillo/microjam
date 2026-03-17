@@ -5,6 +5,7 @@
 #include "bn_vector.h"
 
 #include "bn_sprite_items_jpb_ship.h"
+#include "bn_sound_items.h"
 
 namespace jpb {
     

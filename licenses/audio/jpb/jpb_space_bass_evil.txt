@@ -3,6 +3,7 @@ https://opengameart.org/content/space-bass-evil
 CCO License
 
 Description:
-A longer and eviler version of Space Bass
+A longer and eviler version of Space Bass.
+
 Made with Auxy.
 
