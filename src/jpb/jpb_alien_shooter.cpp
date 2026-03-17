@@ -76,12 +76,6 @@ namespace jpb {
             }
         }
 
-        if (_trashbin.size() > 0) {
-            for (int i = 0; i < _trashbin.size(); i++ ) {
-                _missiles.pop_back();
-            }
-        }
-
         mj::game_result result(victory(), false);
         return result;
     }
