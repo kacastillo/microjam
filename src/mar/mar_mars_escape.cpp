@@ -41,7 +41,7 @@ namespace mar
     {
         bn::fixed diff =  difficulty(recommended_difficulty_level(completed_games, data));
 
-        for (int i = 0; i < 15 + diff*10; i++)
+        for (int i = 0; i < 10 + diff*5; i++)
         {
             enemies.push_back(mar_enemy(
                 {data.random.get_int(MAX_X, MAX_X*3),
