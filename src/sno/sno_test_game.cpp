@@ -63,7 +63,9 @@ namespace sno
         _black_hole.update();
 
         // Check if player collides with black hole
-        if (_player.collides_with(_black_hole.position(), 8))
+        // set to be 16 px away from the center of the black hole, there should be
+        // slight overlap with the player sprite but not too much.
+        if (_player.collides_with(_black_hole.position(), 16))
         {
             _player_captured = true;
         }
