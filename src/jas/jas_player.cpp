@@ -8,6 +8,7 @@
 #include "bn_sprite_items_jas_flames.h"
 #include "bn_sprite_items_jas_explosion.h"
 #include "jas_player.h"
+#include "bn_sound_items.h"
 
 #include "bn_sound_items.h"
 #include "bn_sound_handle.h"
@@ -84,6 +85,7 @@ namespace jas
 
     void player::explode()
     {
+        bn::sound_items::jas_explosion.play();
         _sprite.set_item(bn::sprite_items::jas_explosion);
     }
 
