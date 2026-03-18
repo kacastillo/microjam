@@ -6,6 +6,7 @@
 #include "axo/axo_bubble.h"
 #include "bn_sprite_items_axo_axolotl.h"
 
+
 // All game functions/classes/variables/constants scoped to the namespace
 namespace axo {
 
@@ -79,6 +80,7 @@ void player::update() {
         if(bubbles.size() < bubbles.max_size()) {
             bubbles.push_back(bubble(_sprite.x(), _sprite.y() - 5, BUBBLE_SPEED, 
             BUBBLE_SIZE));
+        bn::sound_items::bubble_blow.play(); // play bubble sound
         }
     }
 
