@@ -47,7 +47,7 @@ axo_aquatic_galaxy_defense::axo_aquatic_galaxy_defense([[maybe_unused]] int comp
             //spawn 10 obstacles, top of screen with varying y
             for(int i = 0; i < 10; i++) {
                 _obstacles.push_back(obstacle(-bn::display::width() / 2 + 20 + (i * 30), 
-                -bn::display::height(),_recommended_player_speed(recommended_difficulty_level(completed_games, data)), OBSTACLE_SIZE));
+                -bn::display::height(),_recommended_obstacle_speed(recommended_difficulty_level(completed_games, data)), OBSTACLE_SIZE));
             }
         }    
 
@@ -97,8 +97,6 @@ mj::game_result axo_aquatic_galaxy_defense::play([[maybe_unused]] const mj::game
             if(bubble.get_hitbox().intersects(obstacle.get_hitbox())) {
                 destroy_obstacle(i);
                 game::play_sound(bn::sound_items::rock_destroy, 0, data); // play sound if bubble hits obstacle
-                //bubbles[i] = bubbles.back();
-                //bubbles.pop_back();
                 break;
             }
 
@@ -151,7 +149,7 @@ void axo_aquatic_galaxy_defense::fade_out([[maybe_unused]] const mj::game_data& 
     _player.clear_bubbles();
 }
 
-bn::fixed axo_aquatic_galaxy_defense::_recommended_player_speed(mj::difficulty_level difficulty) {
+bn::fixed axo_aquatic_galaxy_defense::_recommended_obstacle_speed(mj::difficulty_level difficulty) {
     if(difficulty == mj::difficulty_level::EASY) {
         return 1;
     } else if (difficulty == mj::difficulty_level::NORMAL) {
