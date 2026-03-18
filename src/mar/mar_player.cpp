@@ -19,7 +19,7 @@ namespace mar
         bn::fixed speed) : _sprite(bn::sprite_items::droid.create_sprite(starting_position)),
                            _sprite_action(
                                 bn::create_sprite_animate_action_forever(
-                                    _sprite, 16, bn::sprite_items::droid.tiles_item(),0,3,4
+                                    _sprite, 4, bn::sprite_items::droid.tiles_item(),0,1,2,3,4
                                 )
                             ),
                            _speed(speed),
@@ -34,28 +34,42 @@ namespace mar
      */
     void mar_player::update()
     {
-
-        if (bn::keypad::down_held() && _sprite.y() < MAX_Y)
-        {
-            _sprite.set_y(_sprite.y() + _speed);
-            _sprite_action = bn::create_sprite_animate_action_forever(
-                _sprite,16,bn::sprite_items::droid.tiles_item(),1,2
-            );
-        }
-
+        bool isFrameEven = _sprite_action.current_index()%2 == 0;
         // If up is held moves up. If down is held moves down. Otherwise, moves down at a slower speed to simulate gravity.
-        if (bn::keypad::up_held() && _sprite.y() > MIN_Y)
+
+        if(_sprite.y() < MAX_Y && (
+                (!bn::keypad::down_held() && !bn::keypad::up_held())
+                || (bn::keypad::down_held() && bn::keypad::up_held())
+            )
+        )
         {
-            _sprite.set_y(_sprite.y() - _speed);
-            _sprite_action = bn::create_sprite_animate_action_forever(
-                _sprite,2,bn::sprite_items::droid.tiles_item(),3,4
-            );
-        }
-        else if(_sprite.y() < MAX_Y)
-        {
+            _sprite_action.set_current_index(0);
             _sprite.set_y(_sprite.y() + _speed/4);
-            // _sprite_action = bn::create_sprite_animate_action_forever(
-            //     _sprite, 16, bn::sprite_items::droid.tiles_item(),0,3,4);
+        }
+        else if (bn::keypad::up_held() && _sprite.y() > MIN_Y)
+        {
+            
+            if(_sprite_action.current_index() < 2 && isFrameEven)
+            {
+                _sprite_action.set_current_index(3);
+            } 
+            else if(_sprite_action.current_index() < 2 && !isFrameEven)
+            {
+                _sprite_action.set_current_index(4);
+            }
+            _sprite.set_y(_sprite.y() - _speed);
+        } 
+        else if (bn::keypad::down_held() && _sprite.y() < MAX_Y)
+        {
+            if(_sprite_action.current_index() > 2 && isFrameEven)
+            {
+                _sprite_action.set_current_index(1);
+            }
+            else if(_sprite_action.current_index() > 2 && !isFrameEven)
+            {
+                _sprite_action.set_current_index(2);
+            }
+            _sprite.set_y(_sprite.y() + _speed);
         }
 
         _sprite_action.update();
