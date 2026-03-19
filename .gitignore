@@ -56,3 +56,6 @@ build
 
 
 debug/
+
+# vscode json
+.vscode/
