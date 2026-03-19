@@ -28,8 +28,6 @@
 #include "bn_sprite_items_arrow_left.h"
 #include "bn_regular_bg_items_hyperdrivebg.h"
 
-#include "bn_sound_items.h"
-
 namespace
 {
     constexpr bn::string_view code_credits[] = { "Iker & Kevin James \"bigtoe\" Miclea" };
@@ -51,8 +49,6 @@ namespace sdg{
         _player(input(_code_difficulty(recommended_difficulty_level(completed_games, data)), data.random)),
         _background(bn::regular_bg_items::hyperdrivebg.create_bg(8, 48))
     {
-        //Play music
-        play_sound(bn::sound_items::sdg_game_music, completed_games, data);
 
         // Get the randomly generated arrow pattern from the input system.
         const auto& pattern = _player.challenge();
@@ -124,7 +120,6 @@ namespace sdg{
 
         // resets arrows when incorrect, with some angry flair
         if (_player._incorrect_input) {
-            bn::sound_items::sdg_incorrectsfx.play();
             for (int i = 0; i < _player.challenge().size(); i++) {
                 _arrows[i].set_tiles(arrow_items[pattern[i]]->tiles_item(), 2);
             }
@@ -132,7 +127,6 @@ namespace sdg{
         }
 
         if (_player._correct_input) {
-            bn::sound_items::sdg_correctsfx.play();
             _player._correct_input = false;
         }
 
