@@ -123,7 +123,6 @@ mj::game_result kgg_game_name::play([[maybe_unused]] const mj::game_data& data)
 
 bool kgg_game_name::victory() const
 {
-    //return false;
     return _victory;
 }
 

@@ -14,7 +14,6 @@ player::player()
 void player::update()
 {
     bn::fixed x = _sprite.x();
-    //bn::fixed y = _sprite.y();
 
     if(bn::keypad::left_held()) //left movement
         x -= 1;
